@@ -3,6 +3,8 @@
         "*.embeddedhtml": "html",
         "array": "cpp",
         "tuple": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "chrono": "cpp",
+        "iostream": "cpp"
     }
 }
