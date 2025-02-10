@@ -5,6 +5,7 @@
         "tuple": "cpp",
         "utility": "cpp",
         "chrono": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "random": "cpp"
     }
 }
