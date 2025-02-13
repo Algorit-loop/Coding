@@ -37,7 +37,7 @@ struct node{
         return this->cost < u.cost;
     }
 };
-const int n = 9;
+const int n = 12;
 matrix a,b;
 const int base = 31;
 int dx[4] = {0,0,-1,1};
@@ -62,7 +62,7 @@ int Heuristics(matrix &a, matrix &b){
     for (int i = 0; i < n; i++){
         for (int j = 0; j < n; j++){
             if (b[i][j] != 0)
-                res = res + abs(i - c[b[i][j]].first) + abs(j - c[b[i][j]].second);
+                res = res + (abs(i - c[b[i][j]].first) + abs(j - c[b[i][j]].second));
         }
     }
     return res;
@@ -216,7 +216,7 @@ bool SolveLockBox(matrix &a, int x, int y, int rx, int ry){
         return false;
     }
     return true;
-    // assert(pos.first == x && pos.second == y);
+    assert(pos.first == x && pos.second == y);
 }
 void BFS(matrix &a, int x, int y, int u, int v){
     // cout << x << " " << u << " | x\n";
@@ -305,6 +305,22 @@ void ProgressiveLocking(matrix &a){
             BFS(a,i,n-2,i+2,n-1);
         }
         Lock[i][n-1] = Lock[i][n-2] = true;
+    }
+    for (int j = 0; j < n - 2; j++){
+        int i = n - 2;
+        SolveLockBox(a, i, j, i, j);
+        if (a[i][j] != b[i][j]){
+            cout << "Ngu roi\n";
+            assert(0);
+        }
+    }
+    for (int j = 0; j < n - 2; j++){
+        int i = n - 1;
+        SolveLockBox(a, i, j, i, j);
+        if (a[i][j] != b[i][j]){
+            cout << "Ngu roi\n";
+            assert(0);
+        }
     }
 }
 void Astar(){
@@ -440,7 +456,7 @@ void solve(){
     printmatrix(a);
     // ----- Test Function -----
     // SolveLockBox(a,0,1); [OK]
-    // ProgressiveLocking(a); // [Yet OK] [OK wiht (n-2)x(n-2)]
+    ProgressiveLocking(a); // [Yet OK] [OK wiht (n-2)x(n-2)]
     printmatrix(Lock);
     printmatrix(a);
     Astar();

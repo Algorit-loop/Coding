@@ -6,6 +6,7 @@
         "utility": "cpp",
         "chrono": "cpp",
         "iostream": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "bitset": "cpp"
     }
 }
